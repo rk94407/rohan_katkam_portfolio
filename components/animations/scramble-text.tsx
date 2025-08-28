@@ -76,7 +76,8 @@ const ScrambledText: React.FC<ScrambledTextProps> = ({
   return (
     <div
       ref={rootRef}
-      className={`mt-[5vw] md:ml-[2vw] md:mt-0 font-mono text-[clamp(14px,4vw,32px)] text-white ${className}`}
+      className={`mt-[5vw] md:ml-[2vw] md:mt-0 font-mono text-[clamp(14px,4vw,32px)] 
+        text-black dark:text-white ${className}`} // ✅ light & dark mode
       style={style}
     >
       <p>{children}</p>

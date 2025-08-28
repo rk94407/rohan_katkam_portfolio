@@ -10,6 +10,7 @@ import {
   useCallback,
 } from "react";
 import { gsap } from "gsap";
+import { useTheme } from "next-themes"; // ✅ added
 
 interface TextTypeProps {
   className?: string;
@@ -53,6 +54,8 @@ const TextType = ({
   reverseMode = false,
   ...props
 }: TextTypeProps & React.HTMLAttributes<HTMLElement>) => {
+  const { theme } = useTheme(); // ✅ get current theme
+
   const [displayedText, setDisplayedText] = useState("");
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -73,9 +76,16 @@ const TextType = ({
   }, [variableSpeed, typingSpeed]);
 
   const getCurrentTextColor = () => {
-    if (textColors.length === 0) return "#000000";
-    return textColors[currentTextIndex % textColors.length];
+    // ✅ If user provided custom colors, use them
+    if (textColors.length > 0) {
+      return textColors[currentTextIndex % textColors.length];
+    }
+
+    // ✅ fallback: light/dark mode colors
+    return theme === "dark" ? "#ffffff" : "#000000";
   };
+
+  // ... keep the rest of your code the same (comments preserved)
 
   useEffect(() => {
     if (!startOnVisible || !containerRef.current) return;

@@ -7,14 +7,21 @@ import HeroSection from "@/components/sections/hero-section";
 import { ContactForm } from "@/components/sections/contact-form";
 import PillNav from "@/components/features/navigation/pill-nav-bar";
 import logo from "@/public/src/assets/logo.svg";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { useTheme } from "next-themes";
 
 export default function Page() {
+  const { theme } = useTheme();
+
+  const lightColors = ["#000000", "#444444"]; // dark particles on light bg
+  const darkColors = ["#ffffff", "#cccccc"]; // bright particles on dark bg
+
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* Background Particles */}
       <div className="fixed inset-0 -z-10">
         <Particles
-          particleColors={["#000000", "#000000"]}
+          particleColors={theme === "dark" ? darkColors : lightColors}
           particleCount={500}
           particleSpread={10}
           speed={0.1}
@@ -26,8 +33,10 @@ export default function Page() {
           disableRotation={false}
         />
       </div>
+
       {/* Navbar */}
-      <div className="fixed top-0 left-0 w-full flex items-center justify-center px-6 py-3 z-50 bg-transparent">
+      <div className="fixed top-0 left-0 w-full flex items-center justify-between px-6 py-3 z-50 bg-transparent">
+        {/* Logo + Nav */}
         <div className="flex-1 flex justify-center">
           <PillNav
             logo={logo}
@@ -48,7 +57,13 @@ export default function Page() {
             pillTextColor="#000000"
           />
         </div>
+
+        {/* ✅ Theme Toggle Button */}
+        <div className="ml-4">
+          <ThemeToggle />
+        </div>
       </div>
+
       {/* Hero Section */}
       <div className="flex w-full items-center justify-center" id="about">
         <HeroSection />
@@ -72,18 +87,8 @@ export default function Page() {
         />
       </div>
 
-      {/* <div className="flex min-h-svh flex-col items-center justify-center p-6 md:p-10">
-        <div id="contact" className="w-full max-w-sm md:max-w-6xl"> */}
       <ContactForm id="contact" />
-      {/* </div>
-      </div> */}
-      {/* <div>
-        <TargetCursor spinDuration={2} hideDefaultCursor={true} />
 
-        <h1>Hover over the elements below</h1>
-        <button className="cursor-target">Click me!</button>
-        <div className="cursor-target">Hover target</div>
-      </div> */}
       <div className="flex w-full items-center justify-center">
         <Footer />
       </div>

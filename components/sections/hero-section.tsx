@@ -1,4 +1,3 @@
-
 // import RotatingText from "./animations/rotating-text";
 import ScrambledText from "../animations/scramble-text";
 // import SplitText from "./animations/splitting-text";
@@ -9,24 +8,22 @@ import TiltedCard from "../animations/tilted-card";
 export default function HeroSection() {
   //   const textsForRotation = ["I", "am", "a", "Full Stack Developer"];
 
-
-//     const handleAnimationComplete = () => {
-//   console.log('All letters have animated!');
-// };
-
+  //     const handleAnimationComplete = () => {
+  //   console.log('All letters have animated!');
+  // };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-6 w-full max-w-6xl mx-auto px-4 py-8">
       {/* Title */}
-      <div className="min-h-screen flex items-center justify-center px-auto">
-        <div>Rohan Katkam</div>
+      <div className="min-h-screen flex items-center justify-center">
+        {/* <div>Rohan Katkam</div> */}
         <TextType
           text={["Full Stack Developer", "Software Engineer", "UI/UX Designer"]}
           typingSpeed={75}
           pauseDuration={1500}
           showCursor={true}
           cursorCharacter="|"
-          className="text-6xl lg:text-9xl font-bold text-center text-black"
+          className="text-6xl lg:text-9xl font-bold text-center text-black dark:text-white"
         />
         {/* <SplitText
           text="Rohan Katkam"
@@ -52,21 +49,21 @@ export default function HeroSection() {
         texts={textsForRotation}
         mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
         staggerFrom={"last"}
-        initial={{ y: "100%" }}
+        initial={{ y: "100%"}
         animate={{ y: 0 }}
-        exit={{ y: "-120%" }}
+        exit={{ y: "-120%"}}
         staggerDuration={0.025}
         splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
         transition={{ type: "spring", damping: 30, stiffness: 400 }}
         rotationInterval={2000}
       /> */}
           <ScrambledText
-            className="scrambled-text-demo"
+            className="scrambled-text-demo text-black dark:text-white text-justify"
             radius={100}
             duration={1.2}
             speed={0.5}
             scrambleChars={".: "}
-            style={{ color: "black", fontSize: "1.5rem" }}
+            style={{ fontSize: "1.5rem" }}
           >
             I am Rohan Katkam, Full Stack Developer with 1.5+ years of
             experience designing and delivering scalable web applications using

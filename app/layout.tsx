@@ -33,7 +33,7 @@ export default function RootLayout({
           playfair.variable
         )}
       >
-        <ThemeProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {/* <Header /> */}
           <main className="grow">{children}</main>
           {/* <Footer /> */}
