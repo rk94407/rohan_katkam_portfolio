@@ -1,7 +1,7 @@
 "use client";
 
 import type { SpringOptions } from "motion/react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 
 interface TiltedCardProps {
@@ -55,9 +55,47 @@ export default function TiltedCard({
   });
 
   const [lastY, setLastY] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Gyroscope for mobile devices with scale
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const handleOrientation = (event: DeviceOrientationEvent) => {
+      const maxTilt = rotateAmplitude;
+      const rotateXVal = Math.max(Math.min(event.beta ?? 0, maxTilt), -maxTilt);
+      const rotateYVal = Math.max(
+        Math.min(event.gamma ?? 0, maxTilt),
+        -maxTilt
+      );
+
+      rotateX.set(-rotateXVal);
+      rotateY.set(rotateYVal);
+
+      // Smooth scale effect based on tilt magnitude
+      const tiltMagnitude = Math.sqrt(rotateXVal ** 2 + rotateYVal ** 2);
+      const newScale = 1 + Math.min(tiltMagnitude / 50, scaleOnHover - 1);
+      scale.set(newScale);
+    };
+
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener("deviceorientation", handleOrientation, true);
+    }
+
+    return () => {
+      window.removeEventListener("deviceorientation", handleOrientation);
+    };
+  }, [isMobile, rotateAmplitude, rotateX, rotateY, scale, scaleOnHover]);
 
   function handleMouse(e: React.MouseEvent<HTMLElement>) {
-    if (!ref.current) return;
+    if (!ref.current || isMobile) return; // Disable hover tilt on mobile
 
     const rect = ref.current.getBoundingClientRect();
     const offsetX = e.clientX - rect.left - rect.width / 2;
@@ -78,41 +116,41 @@ export default function TiltedCard({
   }
 
   function handleMouseEnter() {
-    scale.set(scaleOnHover);
+    if (!isMobile) scale.set(scaleOnHover);
     opacity.set(1);
   }
 
   function handleMouseLeave() {
     opacity.set(0);
-    scale.set(1);
-    rotateX.set(0);
-    rotateY.set(0);
+    if (!isMobile) scale.set(1);
+    if (!isMobile) rotateX.set(0);
+    if (!isMobile) rotateY.set(0);
     rotateFigcaption.set(0);
   }
 
   return (
     <figure
       ref={ref}
-      className="relative w-full h-full [perspective:800px] flex flex-col items-center justify-center"
+      className="relative [perspective:800px] flex flex-col items-center justify-center"
       style={{
-        height: containerHeight,
-        width: containerWidth,
+        height: isMobile ? "350px" : containerHeight,
+        width: isMobile ? "350px" : containerWidth,
       }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {showMobileWarning && (
+      {showMobileWarning && isMobile && (
         <div className="absolute top-4 text-center text-sm block sm:hidden">
-          This effect is not optimized for mobile. Check on desktop.
+          Tilt works using your device&apos;s gyroscope!
         </div>
       )}
 
       <motion.div
         className="relative [transform-style:preserve-3d]"
         style={{
-          width: imageWidth,
-          height: imageHeight,
+          width: isMobile ? "350px" : imageWidth,
+          height: isMobile ? "350px" : imageHeight,
           rotateX,
           rotateY,
           scale,
@@ -123,8 +161,8 @@ export default function TiltedCard({
           alt={altText}
           className="absolute top-0 left-0 object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
           style={{
-            width: imageWidth,
-            height: imageHeight,
+            width: isMobile ? "350px" : imageWidth,
+            height: isMobile ? "350px" : imageHeight,
           }}
         />
 
@@ -138,7 +176,7 @@ export default function TiltedCard({
         )}
       </motion.div>
 
-      {showTooltip && (
+      {showTooltip && !isMobile && (
         <motion.figcaption
           className="pointer-events-none absolute left-0 top-0 rounded-[4px] bg-white px-[10px] py-[4px] text-[10px] text-[#2d2d2d] opacity-0 z-[3] hidden sm:block"
           style={{

@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
 import React, { useEffect, useRef, useState } from "react";
-// import { Link } from "react-router-dom";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { Button } from "../../ui/button";
 import Image from "next/image";
@@ -17,8 +17,6 @@ export interface PillNavProps {
   logo: string;
   logoAlt?: string;
   items: PillNavItem[];
-  activeHref?: string; // optional external control
-  onActiveChange?: (href: string) => void; // notify parent if needed
   className?: string;
   ease?: string;
   baseColor?: string;
@@ -33,7 +31,6 @@ const PillNav: React.FC<PillNavProps> = ({
   logo,
   logoAlt = "Logo",
   items,
-  activeHref,
   className = "",
   ease = "power3.easeOut",
   baseColor = "#fff",
@@ -45,6 +42,7 @@ const PillNav: React.FC<PillNavProps> = ({
 }) => {
   const resolvedPillTextColor = pillTextColor ?? baseColor;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState<string>(items[0]?.href || "#");
   const circleRefs = useRef<Array<HTMLSpanElement | null>>([]);
   const tlRefs = useRef<Array<gsap.core.Timeline | null>>([]);
   const activeTweenRefs = useRef<Array<gsap.core.Tween | null>>([]);
@@ -54,6 +52,51 @@ const PillNav: React.FC<PillNavProps> = ({
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const navItemsRef = useRef<HTMLDivElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | HTMLElement | null>(null);
+
+  const pathname = usePathname();
+
+  // ✅ Handle click and scroll + set active menu
+  const handleScrollClick = (
+    e: React.MouseEvent<HTMLAnchorElement | HTMLDivElement>,
+    href: string
+  ) => {
+    setActiveHref(href);
+
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const targetId = href.replace("#", "");
+      const target = document.getElementById(targetId);
+      if (target) {
+        const yOffset = -80;
+        const y =
+          target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    }
+
+    // Close mobile menu
+    setIsMobileMenuOpen(false);
+    const menu = mobileMenuRef.current;
+    if (menu) {
+      gsap.to(menu, {
+        opacity: 0,
+        y: 10,
+        duration: 0.2,
+        ease,
+        onComplete: () => {
+          gsap.set(menu, { visibility: "hidden" });
+        },
+      });
+    }
+
+    // Reset hamburger
+    const hamburger = hamburgerRef.current;
+    if (hamburger) {
+      const lines = hamburger.querySelectorAll(".hamburger-line");
+      gsap.to(lines[0], { rotation: 0, y: 0, duration: 0.3, ease });
+      gsap.to(lines[1], { rotation: 0, y: 0, duration: 0.3, ease });
+    }
+  };
 
   useEffect(() => {
     const layout = () => {
@@ -119,7 +162,6 @@ const PillNav: React.FC<PillNavProps> = ({
     };
 
     layout();
-
     const onResize = () => layout();
     window.addEventListener("resize", onResize);
 
@@ -272,11 +314,13 @@ const PillNav: React.FC<PillNavProps> = ({
         aria-label="Primary"
         style={cssVars}
       >
+        {/* Logo */}
         {isRouterLink(items?.[0]?.href) ? (
           <Link
             href={items[0].href}
             aria-label="Home"
             onMouseEnter={handleLogoEnter}
+            onClick={(e) => handleScrollClick(e, items[0].href)}
             role="menuitem"
             ref={(el) => {
               logoRef.current = el;
@@ -300,6 +344,7 @@ const PillNav: React.FC<PillNavProps> = ({
             href={items?.[0]?.href || "#"}
             aria-label="Home"
             onMouseEnter={handleLogoEnter}
+            onClick={(e) => handleScrollClick(e, items?.[0]?.href || "#")}
             ref={(el) => {
               logoRef.current = el;
             }}
@@ -319,13 +364,11 @@ const PillNav: React.FC<PillNavProps> = ({
           </a>
         )}
 
+        {/* Desktop Menu */}
         <div
           ref={navItemsRef}
           className="relative items-center rounded-full hidden md:flex ml-2"
-          style={{
-            height: "var(--nav-h)",
-            background: "var(--base, #000)",
-          }}
+          style={{ height: "var(--nav-h)", background: "var(--base, #000)" }}
         >
           <ul
             role="menubar"
@@ -397,6 +440,7 @@ const PillNav: React.FC<PillNavProps> = ({
                       aria-label={item.ariaLabel || item.label}
                       onMouseEnter={() => handleEnter(i)}
                       onMouseLeave={() => handleLeave(i)}
+                      onClick={(e) => handleScrollClick(e, item.href)}
                     >
                       {PillContent}
                     </Link>
@@ -409,6 +453,7 @@ const PillNav: React.FC<PillNavProps> = ({
                       aria-label={item.ariaLabel || item.label}
                       onMouseEnter={() => handleEnter(i)}
                       onMouseLeave={() => handleLeave(i)}
+                      onClick={(e) => handleScrollClick(e, item.href)}
                     >
                       {PillContent}
                     </a>
@@ -419,6 +464,7 @@ const PillNav: React.FC<PillNavProps> = ({
           </ul>
         </div>
 
+        {/* Hamburger */}
         <Button
           ref={hamburgerRef}
           onClick={toggleMobileMenu}
@@ -442,6 +488,7 @@ const PillNav: React.FC<PillNavProps> = ({
         </Button>
       </nav>
 
+      {/* Mobile Menu */}
       <div
         ref={mobileMenuRef}
         className="md:hidden absolute top-[3em] left-4 right-4 rounded-[27px] shadow-[0_8px_32px_rgba(0,0,0,0.12)] z-[998] origin-top"
@@ -450,45 +497,41 @@ const PillNav: React.FC<PillNavProps> = ({
           background: "var(--base, #f0f0f0)",
         }}
       >
-        <ul className="list-none m-0 p-[3px] flex flex-col gap-[3px]">
+        <ul className="flex flex-col gap-[3px] p-[3px] list-none">
           {items.map((item) => {
-            const defaultStyle: React.CSSProperties = {
-              background: "var(--pill-bg, #fff)",
-              color: "var(--pill-text, #fff)",
-            };
-            const hoverIn = (e: React.MouseEvent<HTMLAnchorElement>) => {
-              e.currentTarget.style.background = "var(--base)";
-              e.currentTarget.style.color = "var(--hover-text, #fff)";
-            };
-            const hoverOut = (e: React.MouseEvent<HTMLAnchorElement>) => {
-              e.currentTarget.style.background = "var(--pill-bg, #fff)";
-              e.currentTarget.style.color = "var(--pill-text, #fff)";
-            };
-
-            const linkClasses =
-              "block py-3 px-4 text-[16px] font-medium rounded-[50px] transition-all duration-200 ease-[cubic-bezier(0.25,0.1,0.25,1)]";
+            const isActiveItem = activeHref === item.href;
 
             return (
               <li key={item.href}>
                 {isRouterLink(item.href) ? (
                   <Link
                     href={item.href}
-                    className={linkClasses}
-                    style={defaultStyle}
-                    onMouseEnter={hoverIn}
-                    onMouseLeave={hoverOut}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block py-3 px-4 rounded-full font-semibold text-[16px] transition-colors duration-200"
+                    style={{
+                      background: isActiveItem
+                        ? "var(--base, #000)"
+                        : "var(--pill-bg, #fff)",
+                      color: isActiveItem
+                        ? "var(--hover-text, #fff)"
+                        : "var(--pill-text, #000)",
+                    }}
+                    onClick={(e) => handleScrollClick(e, item.href)}
                   >
                     {item.label}
                   </Link>
                 ) : (
                   <a
                     href={item.href}
-                    className={linkClasses}
-                    style={defaultStyle}
-                    onMouseEnter={hoverIn}
-                    onMouseLeave={hoverOut}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block py-3 px-4 rounded-full font-semibold text-[16px] transition-colors duration-200"
+                    style={{
+                      background: isActiveItem
+                        ? "var(--base, #000)"
+                        : "var(--pill-bg, #fff)",
+                      color: isActiveItem
+                        ? "var(--hover-text, #fff)"
+                        : "var(--pill-text, #000)",
+                    }}
+                    onClick={(e) => handleScrollClick(e, item.href)}
                   >
                     {item.label}
                   </a>

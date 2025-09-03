@@ -3,25 +3,27 @@ import Particles from "@/components/animations/bg-particles";
 // import TargetCursor from "@/components/animations/cursor-target";
 import MagicBento from "@/components/animations/magic-bento";
 import Footer from "@/components/sections/footer";
-import HeroSection from "@/components/sections/hero-section";
+import HeroSection from "@/components/sections/hero/hero-section";
 import { ContactForm } from "@/components/sections/contact-form";
 import PillNav from "@/components/features/navigation/pill-nav-bar";
 import logo from "@/public/src/assets/logo.svg";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useTheme } from "next-themes";
+import ScrollToTopButton from "@/components/features/navigation/scroll-to-top-button";
 
 export default function Page() {
   const { theme } = useTheme();
-
-  const lightColors = ["#000000", "#444444"]; // dark particles on light bg
-  const darkColors = ["#ffffff", "#cccccc"]; // bright particles on dark bg
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* Background Particles */}
       <div className="fixed inset-0 -z-10">
         <Particles
-          particleColors={theme === "dark" ? darkColors : lightColors}
+          particleColors={
+            theme === "dark"
+              ? ["#ffffff", "#cccccc"] // bright particles on dark bg
+              : ["#000000", "#444444"] // dark particles on light bg
+          }
           particleCount={500}
           particleSpread={10}
           speed={0.1}
@@ -45,33 +47,35 @@ export default function Page() {
               { label: "Home", href: "/" },
               { label: "About", href: "#about" },
               // { label: "Services", href: "/services" },
-              { label: "Projects", href: "#magic-bento" },
+              { label: "Projects", href: "#projects" },
               { label: "Contact", href: "#contact" },
             ]}
-            activeHref="/"
+            // activeHref="/"
             className="custom-nav"
             ease="power2.easeOut"
-            baseColor="#000000"
-            pillColor="#ffffff"
-            hoveredPillTextColor="#ffffff"
-            pillTextColor="#000000"
+            // Light and Dark Mode Colors
+            baseColor="#000000" // background stays transparent, controlled via Tailwind
+            pillColor="var(--pill-color)"
+            hoveredPillTextColor="var(--hovered-text-color)"
+            pillTextColor="var(--pill-text-color)"
           />
         </div>
 
         {/* ✅ Theme Toggle Button */}
-        <div className="ml-4">
+        <div className="ml-4 sm:flex items-center hidden">
           <ThemeToggle />
         </div>
       </div>
 
       {/* Hero Section */}
-      <div className="flex w-full items-center justify-center" id="about">
+      <section className="flex w-full items-center justify-center" id="about">
         <HeroSection />
-      </div>
+      </section>
 
-      <div
+      {/* Projects Section */}
+      <section
         className="flex items-center justify-center min-h-screen"
-        id="magic-bento"
+        id="projects"
       >
         <MagicBento
           textAutoHide={true}
@@ -85,13 +89,16 @@ export default function Page() {
           particleCount={12}
           glowColor="132, 0, 255"
         />
-      </div>
+      </section>
 
+      {/* Contact Section */}
       <ContactForm id="contact" />
 
+      {/* Footer */}
       <div className="flex w-full items-center justify-center">
         <Footer />
       </div>
+      <ScrollToTopButton />
     </div>
   );
 }
