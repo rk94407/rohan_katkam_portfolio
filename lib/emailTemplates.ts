@@ -4,7 +4,7 @@ export const portfolioMessageTemplate = (
   name: string,
   email: string,
   message: string,
-  linkedin = "https://www.linkedin.com/in/rohan-katkamhttps://www.linkedin.com/in/rohan-katkam-b3b1851b8/",
+  linkedin = "https://www.linkedin.com/in/rohan-katkam-b3b1851b8/",
   github = "https://github.com/rk94407"
 ) => `
     <div style="padding:30px; font-family:Arial, sans-serif; text-align: center;">

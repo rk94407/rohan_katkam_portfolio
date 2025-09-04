@@ -38,7 +38,7 @@ export function ContactForm({
       });
 
       if (response.ok) {
-        toast.success("✅ Message sent successfully!", {
+        toast.success("Message sent successfully!", {
           id: toastId,
           duration: Infinity, // stays until user closes
           closeButton: true, // adds X button
