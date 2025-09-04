@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { Toaster } from "sonner";
 
 import { cn } from "@/lib/utils";
 
@@ -36,6 +37,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {/* <Header /> */}
           <main className="grow">{children}</main>
+          <Toaster position="bottom-right" richColors />
           {/* <Footer /> */}
         </ThemeProvider>
       </body>
