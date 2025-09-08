@@ -53,6 +53,7 @@ const PillNav: React.FC<PillNavProps> = ({
   const navItemsRef = useRef<HTMLDivElement | null>(null);
   const logoRef = useRef<HTMLAnchorElement | HTMLElement | null>(null);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const pathname = usePathname();
 
   // ✅ Handle click and scroll + set active menu
