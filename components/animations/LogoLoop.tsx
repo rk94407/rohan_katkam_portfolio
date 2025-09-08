@@ -53,10 +53,8 @@ const cx = (...parts: Array<string | false | null | undefined>) =>
   parts.filter(Boolean).join(" ");
 
 const useResizeObserver = (
-  callback: () => void,
-  elements: Array<React.RefObject<Element | null>>,
-  dependencies: React.DependencyList
-) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+callback: () => void, elements: Array<React.RefObject<Element | null>>, p0: (number | LogoItem[])[]) => {
   useEffect(() => {
     if (!window.ResizeObserver) {
       const handleResize = () => callback();
@@ -77,14 +75,12 @@ const useResizeObserver = (
     return () => {
       observers.forEach((observer) => observer?.disconnect());
     };
-  }, dependencies);
+  }, [callback, elements]);
 };
 
 const useImageLoader = (
-  seqRef: React.RefObject<HTMLUListElement | null>,
-  onLoad: () => void,
-  dependencies: React.DependencyList
-) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+seqRef: React.RefObject<HTMLUListElement | null>, onLoad: () => void, p0: (number | LogoItem[])[]) => {
   useEffect(() => {
     const images = seqRef.current?.querySelectorAll("img") ?? [];
 
@@ -117,7 +113,7 @@ const useImageLoader = (
         img.removeEventListener("error", handleImageLoad);
       });
     };
-  }, dependencies);
+  }, [onLoad, seqRef]);
 };
 
 const useAnimationLoop = (
@@ -190,7 +186,7 @@ const useAnimationLoop = (
       }
       lastTimestampRef.current = null;
     };
-  }, [targetVelocity, seqWidth, isHovered, pauseOnHover]);
+  }, [targetVelocity, seqWidth, isHovered, pauseOnHover, trackRef]);
 };
 
 export const LogoLoop = React.memo<LogoLoopProps>(
