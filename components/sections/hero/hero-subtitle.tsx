@@ -1,5 +1,4 @@
-import TextType from "@/components/animations/text-type";
-
+import TextType from "@/components/animations/TextType";
 
 export default function HeroSubtitle() {
   return (

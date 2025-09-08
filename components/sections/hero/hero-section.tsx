@@ -1,3 +1,4 @@
+// import { Example } from "@/components/animations/Example";
 import HeroBio from "./hero-bio";
 import HeroImageCard from "./hero-image-card";
 import HeroSubtitle from "./hero-subtitle";
@@ -14,7 +15,9 @@ export default function HeroSection() {
       >
         <HeroBio />
         <HeroImageCard />
+
       </section>
+        {/* <Example /> */}
     </div>
   );
 }

@@ -1,5 +1,4 @@
-import TiltedCard from "@/components/animations/tilted-card";
-
+import TiltedCard from "@/components/animations/TiltedCard";
 
 export default function HeroImageCard() {
   return (

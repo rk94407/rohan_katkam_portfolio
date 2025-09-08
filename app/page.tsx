@@ -1,15 +1,20 @@
 "use client";
-import Particles from "@/components/animations/bg-particles";
+import Particles from "@/components/animations/Particles";
 // import TargetCursor from "@/components/animations/cursor-target";
-import MagicBento from "@/components/animations/magic-bento";
+
 import Footer from "@/components/sections/footer";
 import HeroSection from "@/components/sections/hero/hero-section";
 import { ContactForm } from "@/components/sections/contact-form";
-import PillNav from "@/components/features/navigation/pill-nav-bar";
+
 import logo from "@/public/src/assets/logo.svg";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useTheme } from "next-themes";
 import ScrollToTopButton from "@/components/features/navigation/scroll-to-top-button";
+import PillNav from "@/components/animations/PillNav";
+import MagicBento from "@/components/animations/MagicBento";
+// import { Example } from "@/components/animations/Example";
+
+
 
 export default function Page() {
   const { theme } = useTheme();
@@ -93,6 +98,8 @@ export default function Page() {
 
       {/* Contact Section */}
       <ContactForm id="contact" />
+      
+      {/* <Example /> */}
 
       {/* Footer */}
       <div className="flex w-full items-center justify-center">

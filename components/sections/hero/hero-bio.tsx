@@ -1,4 +1,5 @@
-import ScrambledText from "@/components/animations/scramble-text";
+
+import ScrambledText from "@/components/animations/ScrambleText";
 import { useEffect, useState } from "react";
 
 const ResponsiveScrambledText = () => {

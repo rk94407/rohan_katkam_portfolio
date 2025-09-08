@@ -11,7 +11,7 @@ export const portfolioMessageTemplate = (
     <div style="max-width:600px; margin:0 auto; background:#ffffff; border-radius:8px; 
                 box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:24px; border: 1px lightgray solid; align-items: center;">
         
-        <h2 style="color:#111; margin-bottom:16px;">📬 New Portfolio Message</h2>
+        <h2 style="color:#111; margin-bottom:16px;">New Portfolio Message</h2>
         
         <p style="font-size:16px; margin:6px 0;"><strong>Name:</strong> ${name}</p>
         <p style="font-size:16px; margin:6px 0;"><strong>Email:</strong> ${email}</p>
