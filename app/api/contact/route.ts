@@ -10,7 +10,7 @@ export async function POST(req: Request) {
 
     await resend.emails.send({
       from: "Rohan Katkam <rohankatkam@resend.dev>", // must be verified in Resend
-      to: `${process.env.EMAIL_ADDRESS}`, // ✅ your email
+      to: `${process.env.EMAIL_ADDRESS} || 'rohankatkam1698@gmail.com `, // ✅ your email
       subject: `New message from ${name}`,
       html: portfolioMessageTemplate(name, email, message), // ✅ use template
     });
