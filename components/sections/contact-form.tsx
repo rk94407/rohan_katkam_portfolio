@@ -52,6 +52,7 @@ export function ContactForm({
           closeButton: true,
         });
       }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       toast.error("❌ Network error!", {
         id: toastId,
