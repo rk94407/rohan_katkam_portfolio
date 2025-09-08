@@ -1,0 +1,30 @@
+```
+└── 📁components
+    └── 📁animations
+        ├── bg-particles.tsx
+        ├── cursor-target.tsx
+        ├── decrypt-text.tsx
+        ├── magic-bento.tsx
+        ├── rotating-text.tsx
+        ├── scramble-text.tsx
+        ├── splitting-text.tsx
+        ├── text-type.tsx
+        ├── text-variable-proximity.tsx
+        ├── tilted-card.tsx
+    └── 📁ui
+        ├── button.tsx
+        ├── card.tsx
+        ├── dropdown-menu.tsx
+        ├── input.tsx
+        ├── label.tsx
+        ├── navigation-menu.tsx
+        ├── textarea.tsx
+        ├── theme-toggle.tsx
+    ├── contact-form.tsx
+    ├── footer.tsx
+    ├── header.tsx
+    ├── hero-section.tsx
+    ├── Home.tsx
+    ├── pill-nav-bar.tsx
+    └── theme-provider.tsx
+```
