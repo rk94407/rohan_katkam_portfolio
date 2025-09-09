@@ -73,7 +73,7 @@ export default function Page() {
       </div>
 
       {/* Hero Section */}
-      <section className="flex w-full items-center justify-center" id="about">
+      <section className="flex w-full items-center justify-center">
         <HeroSection />
       </section>
 
