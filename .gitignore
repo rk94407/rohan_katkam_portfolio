@@ -42,3 +42,8 @@ next-env.d.ts
 
 # email template html file
 email.html
+
+#images
+/public/src/assets/nav-bar-logo-dark.svg
+/public/src/assets/nav-bar-logo-light.svg
+/public/src/assets/title-bar-icon.svg
