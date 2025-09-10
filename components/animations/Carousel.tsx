@@ -205,37 +205,35 @@ export default function Carousel({
           return (
             <motion.div
               key={index}
-              className={`relative shrink-0 flex flex-col ${
+              className={`relative shrink-0 flex flex-col overflow-hidden cursor-grab active:cursor-grabbing ${
                 round
-                  ? "items-center justify-center text-center border-0 bg-gray-500"
-                  : "items-start justify-between border border-[#222] rounded-[12px]"
-              } overflow-hidden cursor-grab active:cursor-grabbing`}
+                  ? "rounded-full border-0"
+                  : "rounded-[12px] border border-[#222]"
+              }`}
               style={{
                 width: itemWidth,
                 height: round ? itemWidth : "100%",
                 rotateY,
-                ...(round && { borderRadius: "50%" }),
               }}
               transition={effectiveTransition}
             >
-              {/* <div className={`${round ? "p-0 m-0" : "mb-4 p-5"}`}>
-                <span className="flex h-[28px] w-[28px] items-center justify-center rounded-full bg-[#060010]">
-                  {item.icon}
-                </span>
-              </div> */}
-              <div className="p-5">
-                <div className="mb-1 font-black text-lg text-black dark:text-white">
-                  {item.title}
+              {/* Full card image */}
+              {item.image && (
+                <div className="absolute inset-0 w-full h-full">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
                 </div>
-                <p className="text-sm text-black dark:text-white">
-                  {item.description}
-                </p>
-                {item.image && (
-                  <div className="w-full h-48 relative">
-                    {/* If using next/image */}
-                    <Image src={item.image} alt={item.title} fill className="object-cover" />
-                  </div>
-                )}
+              )}
+
+              {/* Content overlay */}
+              <div className="relative z-10 p-5 flex flex-col justify-end h-full bg-black/30 text-white">
+                <div className="mb-1 font-black text-lg">{item.title}</div>
+                <p className="text-sm">{item.description}</p>
               </div>
             </motion.div>
           );
