@@ -15,9 +15,8 @@ export default function HeroSection() {
       >
         <HeroBio />
         <HeroImageCard />
-
       </section>
-        {/* <Example /> */}
+      {/* <Example /> */}
     </div>
   );
 }

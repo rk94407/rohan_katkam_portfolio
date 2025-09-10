@@ -16,7 +16,13 @@ export default function HeroImageCard() {
         showMobileWarning={false}
         showTooltip={true}
         displayOverlayContent={true}
-        overlayContent={<p className="tilted-card-demo-text">Rohan Katkam</p>}
+        overlayContent={
+          <div className="absolute top-5 left-1/2 -translate-x-1/2">
+            <p className="px-4 py-2 rounded-lg bg-white/20 text-white font-bold text-lg shadow-lg">
+              Rohan Katkam
+            </p>
+          </div>
+        }
       />
     </div>
   );

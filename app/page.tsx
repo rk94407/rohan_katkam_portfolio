@@ -1,7 +1,6 @@
 "use client";
-import Particles from "@/components/animations/Particles";
-// import TargetCursor from "@/components/animations/cursor-target";
 
+import Particles from "@/components/animations/Particles";
 import Footer from "@/components/sections/footer";
 import HeroSection from "@/components/sections/hero/hero-section";
 import { ContactForm } from "@/components/sections/contact-form";
@@ -11,14 +10,11 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useTheme } from "next-themes";
 import ScrollToTopButton from "@/components/features/navigation/scroll-to-top-button";
 import PillNav from "@/components/animations/PillNav";
-import MagicBento from "@/components/animations/MagicBento";
-// import { Example } from "@/components/animations/Example";
-
-
+import DomeGallery from "@/components/animations/DomeGallery";
+import Carousel from "@/components/animations/Carousel";
 
 export default function Page() {
   const { theme } = useTheme();
-
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* Background Particles */}
@@ -51,8 +47,8 @@ export default function Page() {
             items={[
               { label: "Home", href: "/" },
               { label: "About", href: "#about" },
-              // { label: "Services", href: "/services" },
               { label: "Projects", href: "#projects" },
+              { label: "Skills", href: "#skills" },
               { label: "Contact", href: "#contact" },
             ]}
             // activeHref="/"
@@ -79,26 +75,39 @@ export default function Page() {
 
       {/* Projects Section */}
       <section
-        className="flex items-center justify-center min-h-screen"
+        className="flex items-center justify-center h-100px min-h-screen"
         id="projects"
       >
-        <MagicBento
-          textAutoHide={true}
-          enableStars={true}
-          enableSpotlight={true}
-          enableBorderGlow={true}
-          enableTilt={true}
-          enableMagnetism={true}
-          clickEffect={true}
-          spotlightRadius={300}
-          particleCount={12}
-          glowColor="132, 0, 255"
-        />
+        <div style={{ position: "relative" }}>
+          <Carousel
+            // baseWidth={300}
+            autoplay={true}
+            autoplayDelay={3000}
+            pauseOnHover={true}
+            loop={true}
+            round={false}
+          />
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section
+        className="flex items-center justify-center w-full py-16 min-h-screen text-2xl"
+        id="skills"
+      >
+        <div style={{ width: "80vw", height: "80vh" }}>
+          <DomeGallery
+            fit={0.5}
+            minRadius={300}
+            segments={30}
+            grayscale={false}
+          />
+        </div>
       </section>
 
       {/* Contact Section */}
       <ContactForm id="contact" />
-      
+
       {/* <Example /> */}
 
       {/* Footer */}
