@@ -27,7 +27,6 @@ export function ContactForm({
     const email = formData.get("email") as string;
     const message = formData.get("message") as string;
 
-    // Show a loading toast
     const toastId = toast.loading("Sending your message...");
 
     try {
@@ -38,26 +37,23 @@ export function ContactForm({
       });
 
       if (response.ok) {
-        toast.success("Message sent successfully!", {
+        toast.success("✅ Message sent successfully!", {
           id: toastId,
-          duration: Infinity, // stays until user closes
-          closeButton: true, // adds X button
+          duration: 3000, // auto close after 3s
         });
         form.reset();
       } else {
         const data = await response.json();
         toast.error(data.error || "❌ Something went wrong.", {
           id: toastId,
-          duration: Infinity,
-          closeButton: true,
+          duration: 5000,
         });
       }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      toast.error("❌ Network error!", {
+      toast.error("❌ Network error! Please try again.", {
         id: toastId,
-        duration: Infinity,
-        closeButton: true,
+        duration: 3000,
       });
     } finally {
       setLoading(false);

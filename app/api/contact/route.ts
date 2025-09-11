@@ -18,11 +18,13 @@ export async function POST(req: Request) {
       }),
       resend.emails.send({
         from: "Rohan Katkam <rohankatkam@resend.dev>",
-        to: email,
+        to: `${email}`,
         subject: `Thanks for reaching out, ${name}!`,
         html: userConfirmationTemplate(name, email, message),
       }),
     ]);
+
+    console.log(name, email, message);
 
     return NextResponse.json({ success: true });
   } catch (error) {

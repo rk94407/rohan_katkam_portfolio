@@ -11,6 +11,7 @@ export interface CarouselItem {
   id: number;
   icon?: React.ReactNode;
   image?: string;
+  link?: string;
 }
 
 export interface CarouselProps {
@@ -237,7 +238,18 @@ export default function Carousel({
                 {/* Content overlay */}
                 <div className="relative z-10 p-5 flex flex-col justify-end h-full bg-black/30 text-white">
                   <div className="mb-1 font-black text-lg">{item.title}</div>
-                  <p className="text-sm">{item.description}</p>
+                  <p className="text-sm mb-3">{item.description}</p>
+
+                  {item.link && (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="self-start bg-white text-black font-semibold text-sm px-4 py-2 rounded-lg hover:bg-gray-200 transition dark:bg-black dark:text-white dark:hover:bg-gray-800"
+                    >
+                      View Project
+                    </a>
+                  )}
                 </div>
               </motion.div>
             );

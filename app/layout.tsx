@@ -32,14 +32,16 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "flex min-h-screen font-sans antialiased",
+          "flex flex-col min-h-screen font-sans antialiased",
           inter.variable,
           playfair.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {/* <Header /> */}
-          <main className="grow">{children}</main>
+          <main className="grow w-full max-w-[100%] px-4 sm:px-6 md:px-8 lg:px-12 mx-auto">
+            {children}
+          </main>
           <Toaster position="bottom-right" richColors />
           {/* <Footer /> */}
         </ThemeProvider>
