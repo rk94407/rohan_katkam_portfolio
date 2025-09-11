@@ -4,8 +4,8 @@ export const userConfirmationTemplate = (
   message: string,
   linkedin = "https://www.linkedin.com/in/rohan-katkam-b3b1851b8/",
   github = "https://github.com/rk94407",
-  instagram = "https://www.instagram.com/rohankatkam/",
-  youtube = "https://www.youtube.com/@rohankatkam"
+  instagram = "https://www.instagram.com/katkamrohan/",
+  youtube = "https://www.youtube.com/@rohankatkam1698"
 ) => `
   <div style="display:none;overflow:hidden;line-height:1px;opacity:0;max-height:0;max-width:0">
     New message from your portfolio contact form ${name} (${email})
