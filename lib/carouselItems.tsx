@@ -17,13 +17,19 @@ export const DEFAULT_ITEMS: CarouselItem[] = [
   {
     id: 2,
     title: "Bio187.com",
-    description: "Experience the vibrant city nightlife.",
+    description: "An online RFP Form",
     image: "/images/passport-photo.jpg",
   },
-//   {
-//     id: 3,
-//     title: "Beach Relaxation",
-//     description: "Unwind on the sunny beaches.",
-//     image: "/images/passport-photo.jpg",
-//   },
+  {
+    id: 3,
+    title: "",
+    description: "Unwind on the sunny beaches.",
+    image: "/images/passport-photo.jpg",
+  },
+  {
+    id: 4,
+    title: "Rite2Rule.com",
+    description: "https://rite2rule.com/",
+    image: "/images/passport-photo.jpg",
+  },
 ];
