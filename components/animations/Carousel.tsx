@@ -154,122 +154,124 @@ export default function Carousel({
   //     };
 
   return (
-    <div
-      ref={containerRef}
-      className={`relative overflow-hidden p-4 ${
-        round
-          ? "rounded-full border border-white"
-          : "rounded-[24px] border border-[#222]"
-      }`}
-      style={{
-        width: `${containerSize.width}px`,
-        height: `${containerSize.height}px`,
-      }}
-    >
-      <motion.div
-        className="flex"
-        drag="x"
-        {...(loop
-          ? {}
-          : {
-              dragConstraints: {
-                left: -trackItemOffset * (carouselItems.length - 1),
-                right: 0,
-              },
-            })}
-        style={{
-          gap: `${GAP}px`,
-          perspective: 1000,
-          perspectiveOrigin: `${
-            currentIndex * trackItemOffset + itemWidth / 2
-          }px 50%`,
-          x,
-          width: containerSize.width,
-          height: containerSize.height,
-        }}
-        onDragEnd={handleDragEnd}
-        animate={{ x: -(currentIndex * trackItemOffset) }}
-        transition={effectiveTransition}
-        onAnimationComplete={handleAnimationComplete}
-      >
-        {carouselItems.map((item, index) => {
-          const range = [
-            -(index + 1) * trackItemOffset,
-            -index * trackItemOffset,
-            -(index - 1) * trackItemOffset,
-          ];
-          const outputRange = [90, 0, -90];
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          const rotateY = useTransform(x, range, outputRange, { clamp: false });
-
-          return (
-            <motion.div
-              key={index}
-              className={`relative shrink-0 flex flex-col overflow-hidden cursor-grab active:cursor-grabbing ${
-                round
-                  ? "rounded-full border-0"
-                  : "rounded-[12px] border border-[#222]"
-              }`}
-              style={{
-                width: itemWidth,
-                height: round ? itemWidth : "100%",
-                rotateY,
-              }}
-              transition={effectiveTransition}
-            >
-              {/* Full card image */}
-              {item.image && (
-                <div className="absolute inset-0 w-full h-full">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              )}
-
-              {/* Content overlay */}
-              <div className="relative z-10 p-5 flex flex-col justify-end h-full bg-black/30 text-white">
-                <div className="mb-1 font-black text-lg">{item.title}</div>
-                <p className="text-sm">{item.description}</p>
-              </div>
-            </motion.div>
-          );
-        })}
-      </motion.div>
-
-      {/* dots */}
-      {/* <div
-        className={`flex w-full justify-center ${
+    <div className="relative w-max mx-auto">
+      {/* ⬇️ Carousel container */}
+      <div
+        ref={containerRef}
+        className={`relative overflow-hidden p-4 ${
           round
-            ? "absolute z-20 bottom-12 left-1/2 -translate-x-1/2"
-            : ""
+            ? "rounded-full border-2 border-white"
+            : "rounded-[24px] border-2 border-[#222]"
         }`}
+        style={{
+          width: `${containerSize.width}px`,
+          height: `${containerSize.height}px`,
+        }}
       >
-        <div className="mt-4 flex w-[150px] justify-between px-8">
-          {items.map((_, index) => (
-            <motion.div
-              key={index}
-              className={`h-2 w-2 rounded-full cursor-pointer transition-colors duration-150 ${
-                currentIndex % items.length === index
-                  ? round
-                    ? "bg-white"
-                    : "bg-[#333333]"
-                  : round
-                  ? "bg-[#555]"
-                  : "bg-[rgba(51,51,51,0.4)]"
-              }`}
-              animate={{
-                scale: currentIndex % items.length === index ? 1.2 : 1,
-              }}
-              onClick={() => setCurrentIndex(index)}
-              transition={{ duration: 0.15 }}
-            />
-          ))}
-        </div>
-      </div> */}
+        <motion.div
+          className="flex"
+          drag="x"
+          {...(loop
+            ? {}
+            : {
+                dragConstraints: {
+                  left: -trackItemOffset * (carouselItems.length - 1),
+                  right: 0,
+                },
+              })}
+          style={{
+            gap: `${GAP}px`,
+            perspective: 1000,
+            perspectiveOrigin: `${
+              currentIndex * trackItemOffset + itemWidth / 2
+            }px 50%`,
+            x,
+            width: containerSize.width,
+            height: containerSize.height,
+          }}
+          onDragEnd={handleDragEnd}
+          animate={{ x: -(currentIndex * trackItemOffset) }}
+          transition={effectiveTransition}
+          onAnimationComplete={handleAnimationComplete}
+        >
+          {carouselItems.map((item, index) => {
+            const range = [
+              -(index + 1) * trackItemOffset,
+              -index * trackItemOffset,
+              -(index - 1) * trackItemOffset,
+            ];
+            const outputRange = [90, 0, -90];
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            const rotateY = useTransform(x, range, outputRange, {
+              clamp: false,
+            });
+
+            return (
+              <motion.div
+                key={index}
+                className={`relative shrink-0 flex flex-col overflow-hidden cursor-grab active:cursor-grabbing ${
+                  round
+                    ? "rounded-full border-0"
+                    : "rounded-[12px] border border-[#222]"
+                }`}
+                style={{
+                  width: itemWidth,
+                  height: round ? itemWidth : "100%",
+                  rotateY,
+                }}
+                transition={effectiveTransition}
+              >
+                {/* Full card image */}
+                {item.image && (
+                  <div className="absolute inset-0 w-full h-full">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                  </div>
+                )}
+
+                {/* Content overlay */}
+                <div className="relative z-10 p-5 flex flex-col justify-end h-full bg-black/30 text-white">
+                  <div className="mb-1 font-black text-lg">{item.title}</div>
+                  <p className="text-sm">{item.description}</p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
+
+      {/* ⬇️ Buttons outside container */}
+      <div className="flex justify-between mt-4 w-full max-w-[calc(800px*0.9)] mx-auto">
+        <button
+          onClick={() =>
+            setCurrentIndex((prev) =>
+              loop
+                ? (prev - 1 + carouselItems.length) % carouselItems.length
+                : Math.max(prev - 1, 0)
+            )
+          }
+          className="bg-black/50 text-white rounded-full px-4 py-2 hover:bg-black/70 transition dark:bg-white/50 dark:text-black dark:hover:bg-white/70"
+        >
+          ◀
+        </button>
+        <button
+          onClick={() =>
+            setCurrentIndex((prev) =>
+              loop
+                ? (prev + 1) % carouselItems.length
+                : Math.min(prev + 1, carouselItems.length - 1)
+            )
+          }
+          className="bg-black/50 text-white rounded-full px-4 py-2 hover:bg-black/70 transition dark:bg-white/50 dark:text-black dark:hover:bg-white/70"
+        >
+          ▶
+        </button>
+      </div>
     </div>
   );
 }

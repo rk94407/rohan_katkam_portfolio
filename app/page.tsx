@@ -75,13 +75,17 @@ export default function Page() {
 
       {/* Projects Section */}
       <section
-        className="flex items-center justify-center h-100px min-h-screen"
+        className="flex flex-col items-center justify-center h-100px min-h-screen"
         id="projects"
       >
+        {/* <div className="flex flex-col items-center justify-center mb-8">
+          <h1 className="text-6xl font-bold">Projects</h1>
+        </div> */}
+
         <div style={{ position: "relative" }}>
           <Carousel
             // baseWidth={300}
-            autoplay={true}
+            autoplay={false}
             autoplayDelay={3000}
             pauseOnHover={true}
             loop={true}
@@ -92,15 +96,20 @@ export default function Page() {
 
       {/* Skills Section */}
       <section
-        className="flex items-center justify-center w-full py-16 min-h-screen text-2xl"
+        className="flex flex-col items-center justify-center w-full py-16 min-h-screen text-2xl"
         id="skills"
       >
+        {/* <div className="flex flex-col items-center justify-center">
+          <h2 className="text-6xl font-bold">Skills</h2>
+        </div> */}
+
         <div style={{ width: "80vw", height: "80vh" }}>
           <DomeGallery
             fit={0.5}
             minRadius={300}
-            segments={30}
+            segments={35}
             grayscale={false}
+            maxVerticalRotationDeg={10}
           />
         </div>
       </section>
