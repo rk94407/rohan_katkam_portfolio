@@ -12,7 +12,7 @@ export const DEFAULT_ITEMS: CarouselItem[] = [
     title: "Movie App",
     description: "Explore the app with most recent movies and tv shows.",
     image: "/images/movie-app.png",
-    link: "https://react-movie-hub-app-github.netlify.app",
+    // link: "https://react-movie-hub-app-github.netlify.app",
   },
   {
     id: 2,
