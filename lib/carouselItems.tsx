@@ -18,7 +18,7 @@ export const DEFAULT_ITEMS: CarouselItem[] = [
     id: 2,
     title: "Bio187.com",
     description: "An online RFP Form",
-    image: "/images/passport-photo.jpg",
+    image: "/images/bio187.png",
     link: "https://bio187.com/",
   },
   {
