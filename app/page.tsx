@@ -15,6 +15,7 @@ import Carousel from "@/components/animations/Carousel";
 import WorkExperience from "@/components/sections/experience";
 
 import { motion, Easing } from "framer-motion";
+import Resume from "@/components/sections/resume/Resume";
 
 // Variants for sections and children
 const sectionVariants = {
@@ -81,9 +82,16 @@ export default function Page() {
             pillTextColor="var(--pill-text-color)"
           />
         </div>
-        <div className="ml-4 sm:flex items-center hidden">
+
+        {/* Desktop Theme Toggle (Right) */}
+        <div className="ml-4 hidden md:flex items-center">
           <ThemeToggle />
         </div>
+      </div>
+
+      {/* Mobile Theme Toggle (Top Center) */}
+      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 md:hidden">
+        <ThemeToggle />
       </div>
 
       {/* Hero Section */}
@@ -106,6 +114,8 @@ export default function Page() {
           <WorkExperience />
         </motion.div>
       </motion.section>
+
+      <Resume />
 
       {/* Projects Section */}
       <motion.section

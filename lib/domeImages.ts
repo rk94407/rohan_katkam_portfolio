@@ -146,5 +146,10 @@ export const DEFAULT_IMAGES: ImageItem[] = [
     alt: "three.js",
     text: "three.js",
   },
+  {
+    src: "https://files.svgcdn.io/tabler/brand-framer-motion.svg",
+    alt: "Framer Motion",
+    text: "Framer Motion",
+  },
   //   { src: "", alt: "" },
 ];
