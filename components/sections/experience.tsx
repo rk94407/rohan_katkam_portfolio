@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const WorkExperience = () => {
   return (
     <div className="relative max-w-4xl mx-auto p-4 sm:p-8">
-      {/* Title + centered bar */}
+      {/* Title */}
       <div className="flex flex-col items-center">
         <motion.h1
           className="
@@ -47,7 +47,7 @@ const WorkExperience = () => {
 
             {/* Timeline entry */}
             <motion.div
-              className="relative mb-8 sm:mb-12 last:mb-0 flex flex-col items-center sm:flex-row sm:justify-center text-center sm:text-left"
+              className="relative mb-10 sm:mb-16 last:mb-0 flex flex-col items-center sm:flex-row sm:justify-center text-center sm:text-left"
               initial={{ opacity: 0, y: 80, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               transition={{
@@ -64,8 +64,15 @@ const WorkExperience = () => {
 
                   <span className="text-3xl sm:text-4xl">{exp.dotColor}</span>
 
+                  {/* Book description (no bullets) */}
+                  <div className="text-gray-600 text-xs sm:text-sm leading-relaxed dark:text-gray-300 space-y-2 text-center sm:text-left max-w-md">
+                    {exp.description.map((item, i) => (
+                      <p key={i}>{item}</p>
+                    ))}
+                  </div>
+
                   {/* Mobile line below the book */}
-                  <div className="block sm:hidden w-px h-4 bg-gray-400 mt-1" />
+                  <div className="block sm:hidden w-px h-4 bg-gray-400 mb-5" />
                 </div>
               ) : (
                 <div className="flex flex-col sm:flex-row w-full max-w-3xl items-center text-center sm:text-left hover:scale-[1.05] transition-transform duration-300 relative z-10">
@@ -77,7 +84,6 @@ const WorkExperience = () => {
                     <p className="text-gray-600 text-xs sm:text-sm dark:text-gray-300 mb-2">
                       {exp.period}
                     </p>
-
                     {/* Mobile connector line from period to dot */}
                     <div className="block sm:hidden w-px h-4 bg-gray-400 mx-auto" />
                   </div>
@@ -105,13 +111,15 @@ const WorkExperience = () => {
                   </motion.div>
 
                   {/* Right side */}
-                  <div className="w-full sm:w-1/2 sm:pl-8">
+                  <div className="w-full sm:w-1/2 sm:pl-8 mb-5">
                     <h4 className="text-base sm:text-xl font-semibold text-gray-800 mb-4 dark:text-white">
                       {exp.role}
                     </h4>
-                    <p className="text-gray-600 text-xs sm:text-sm leading-relaxed dark:text-gray-300 mb-4">
-                      {exp.description}
-                    </p>
+                    <ul className="text-gray-600 text-xs sm:text-sm leading-relaxed dark:text-gray-300 mb-4 list-disc list-inside space-y-2">
+                      {exp.description.map((item, i) => (
+                        <li key={i}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               )}
