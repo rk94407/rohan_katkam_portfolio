@@ -126,22 +126,6 @@ export default function Page() {
         viewport={{ once: false, amount: 0.2 }}
         variants={sectionVariants}
       >
-        <div className="flex flex-col items-center justify-center px-4">
-          <h1
-            className="
-      text-3xl        /* Base size for very small screens */
-      sm:text-3xl     /* Small devices (640px+) */
-      md:text-4xl     /* Tablets (768px+) */
-      lg:text-5xl     /* Laptops (1024px+) */
-      xl:text-6xl     /* Large screens (1280px+) */
-      font-bold 
-      text-center
-      mb-8
-    "
-          >
-            Projects
-          </h1>
-        </div>
         <motion.div variants={childVariants} style={{ position: "relative" }}>
           <Carousel
             autoplay={false}
@@ -166,22 +150,6 @@ export default function Page() {
           variants={childVariants}
           style={{ width: "80vw", height: "80vh" }}
         >
-          <div className="flex flex-col items-center justify-center px-4">
-            <h1
-              className="
-      text-3xl        /* Base size for very small screens */
-      sm:text-3xl     /* Small devices (640px+) */
-      md:text-4xl     /* Tablets (768px+) */
-      lg:text-5xl     /* Laptops (1024px+) */
-      xl:text-6xl     /* Large screens (1280px+) */
-      font-bold 
-      text-center
-    "
-            >
-              My Skills
-            </h1>
-          </div>
-
           <DomeGallery
             fit={0.5}
             minRadius={300}

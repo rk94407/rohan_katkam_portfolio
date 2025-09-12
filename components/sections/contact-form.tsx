@@ -63,11 +63,26 @@ export function ContactForm({
   return (
     <div
       className={cn(
-        "min-h-screen flex items-center justify-center px-4",
+        "min-h-screen flex flex-col items-center justify-center px-4 gap-8",
         className
       )}
       {...props}
     >
+      <div className="flex flex-col items-center justify-center px-4">
+        <h1
+          className="
+      text-3xl        /* Base size for very small screens */
+      sm:text-3xl     /* Small devices (640px+) */
+      md:text-4xl     /* Tablets (768px+) */
+      lg:text-5xl     /* Laptops (1024px+) */
+      xl:text-6xl     /* Large screens (1280px+) */
+      font-bold 
+      text-center
+    "
+        >
+          Contact Me
+        </h1>
+      </div>
       <Card className="overflow-hidden w-full max-w-md md:max-w-xl lg:max-w-2xl backdrop-blur-xs bg-white/10 dark:bg-black/10 shadow-lg">
         <CardContent>
           <form className="p-6" onSubmit={handleSubmit}>

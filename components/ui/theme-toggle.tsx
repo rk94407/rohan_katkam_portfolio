@@ -23,7 +23,7 @@ export function ThemeToggle() {
             variant="outline"
             size="icon"
             aria-label="Toggle theme"
-            className="relative rounded-full w-10 h-10 flex items-center justify-center p-0"
+            className="relative rounded-full w-10 h-10 flex items-center justify-center p-0 bg-white dark:bg-black hover:bg-gray-100 dark:hover:bg-gray-900"
           >
             {/* Sun icon (visible in light mode) */}
             <Sun className="h-[1.5rem] w-[1.5rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
