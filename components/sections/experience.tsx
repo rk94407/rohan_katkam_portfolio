@@ -43,7 +43,7 @@ const WorkExperience = () => {
               }}
               viewport={{ once: false, amount: 0.3 }}
             >
-              <div className="flex flex-col sm:flex-row w-full max-w-3xl items-center text-center sm:text-left hover:scale-[1.02] transition-transform duration-300 relative z-10">
+              <div className="flex flex-col sm:flex-row w-full max-w-3xl items-center text-center sm:text-left hover:scale-[1.05] transition-transform duration-300 relative z-10">
                 {/* Left side - Company info */}
                 <div className="w-full sm:w-1/2 sm:pr-8 sm:text-right mb-3 sm:mb-0">
                   <h3 className="text-base sm:text-xl font-semibold text-gray-800 mb-1 dark:text-white">

@@ -13,7 +13,7 @@ export default function HeroImageCard() {
       viewport={{ once: false, amount: 0.3 }}
     >
       <TiltedCard
-        imageSrc="/images/passport-photo.jpg"
+        imageSrc="/images/profile.jpg"
         altText="Rohan Katkam"
         captionText="Rohan Katkam"
         containerHeight="400px"
