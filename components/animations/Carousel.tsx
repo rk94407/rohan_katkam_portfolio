@@ -236,7 +236,7 @@ export default function Carousel({
                 )}
 
                 {/* Content overlay */}
-                <div className="relative z-10 p-5 flex flex-col justify-end h-full bg-black/30 text-white">
+                <div className="relative z-10 p-5 flex flex-col justify-end h-full bg-black/30 text-white mb-2">
                   <div className="mb-1 font-black text-lg">{item.title}</div>
                   <p className="text-sm mb-3">{item.description}</p>
 
