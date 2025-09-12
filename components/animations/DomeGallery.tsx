@@ -749,7 +749,7 @@ export default function DomeGallery({
       >
         <main
           ref={mainRef}
-          className="absolute inset-0 grid place-items-center overflow-hidden select-none bg-transparent"
+          className="absolute inset-0 grid place-items-center overflow-hidden select-none bg-transparent cursor-grab active:cursor-grabbing"
           style={{
             touchAction: "none",
             WebkitUserSelect: "none",
@@ -781,7 +781,7 @@ export default function DomeGallery({
                   }
                 >
                   <div
-                    className="item__image absolute overflow-hidden cursor-pointer bg-gray-200 transition-transform duration-300 flex flex-col"
+                    className="item__image absolute overflow-hidden cursor-grab active:cursor-grabbing bg-gray-200 transition-transform duration-300 flex flex-col"
                     role="button"
                     tabIndex={0}
                     aria-label={it.alt || "Open image"}
@@ -805,7 +805,7 @@ export default function DomeGallery({
                       src={it.src}
                       draggable={false}
                       alt={it.alt}
-                      className="w-full h-full object-cover pointer-events-none"
+                      className="w-full h-full object-cover cursor-grab active:cursor-grabbing"
                       style={{
                         backfaceVisibility: "hidden",
                         filter: `var(--image-filter, ${grayscale ? "grayscale(1)" : "none"})`,

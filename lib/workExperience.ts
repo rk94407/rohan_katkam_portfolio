@@ -8,6 +8,13 @@ export const experiences = [
     dotColor: "bg-teal-500",
   },
   {
+    company: "",
+    period: "",
+    role: "",
+    description: "",
+    dotColor: "📚",
+  },
+  {
     company: "Allure MedSpa",
     period: "Dec 2017 - Apr 2018",
     role: "WEB DEVELOPER INTERN",
