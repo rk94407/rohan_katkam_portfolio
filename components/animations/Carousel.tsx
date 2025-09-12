@@ -155,8 +155,8 @@ export default function Carousel({
   //     };
 
   return (
-    <div className="relative w-max mx-auto">
-      {/* ⬇️ Carousel container */}
+    <div className="relative w-max mx-auto backdrop-blur-xs bg-white/10 dark:bg-black/10">
+      {/* Main Carousel container */}
       <div
         ref={containerRef}
         className={`relative overflow-hidden p-4 ${

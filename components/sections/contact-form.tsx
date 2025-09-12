@@ -68,7 +68,7 @@ export function ContactForm({
       )}
       {...props}
     >
-      <Card className="overflow-hidden w-full max-w-md md:max-w-xl lg:max-w-2xl">
+      <Card className="overflow-hidden w-full max-w-md md:max-w-xl lg:max-w-2xl backdrop-blur-xs bg-white/10 dark:bg-black/10 shadow-lg">
         <CardContent>
           <form className="p-6" onSubmit={handleSubmit}>
             <div className="flex flex-col gap-6">
