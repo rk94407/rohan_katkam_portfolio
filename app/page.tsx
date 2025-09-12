@@ -12,18 +12,40 @@ import ScrollToTopButton from "@/components/features/navigation/scroll-to-top-bu
 import PillNav from "@/components/animations/PillNav";
 import DomeGallery from "@/components/animations/DomeGallery";
 import Carousel from "@/components/animations/Carousel";
+import WorkExperience from "@/components/sections/experience";
+
+import { motion, Easing } from "framer-motion";
+
+// Variants for sections and children
+const sectionVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.8, ease: "easeOut" as Easing },
+  },
+};
 
 export default function Page() {
   const { theme } = useTheme();
+
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* Background Particles */}
       <div className="fixed inset-0 -z-10">
         <Particles
           particleColors={
-            theme === "dark"
-              ? ["#ffffff", "#cccccc"] // bright particles on dark bg
-              : ["#000000", "#444444"] // dark particles on light bg
+            theme === "dark" ? ["#ffffff", "#cccccc"] : ["#000000", "#444444"]
           }
           particleCount={500}
           particleSpread={10}
@@ -39,7 +61,6 @@ export default function Page() {
 
       {/* Navbar */}
       <div className="fixed top-0 left-0 w-full flex items-center justify-between px-6 py-3 z-50 bg-transparent">
-        {/* Logo + Nav */}
         <div className="flex-1 flex justify-center">
           <PillNav
             logo={logo}
@@ -47,22 +68,19 @@ export default function Page() {
             items={[
               { label: "Home", href: "/" },
               { label: "About", href: "#about" },
+              { label: "Experience", href: "#experience" },
               { label: "Projects", href: "#projects" },
               { label: "Skills", href: "#skills" },
               { label: "Contact", href: "#contact" },
             ]}
-            // activeHref="/"
             className="custom-nav"
             ease="power2.easeOut"
-            // Light and Dark Mode Colors
-            baseColor="#000000" // background stays transparent, controlled via Tailwind
+            baseColor="#000000"
             pillColor="var(--pill-color)"
             hoveredPillTextColor="var(--hovered-text-color)"
             pillTextColor="var(--pill-text-color)"
           />
         </div>
-
-        {/* ✅ Theme Toggle Button */}
         <div className="ml-4 sm:flex items-center hidden">
           <ThemeToggle />
         </div>
@@ -70,40 +88,58 @@ export default function Page() {
 
       {/* Hero Section */}
       <section className="flex w-full items-center justify-center">
-        <HeroSection />
+        <motion.div variants={childVariants}>
+          <HeroSection />
+        </motion.div>
       </section>
+
+      {/* Experience Section */}
+      <motion.section
+        id="experience"
+        className="flex flex-col items-center justify-center w-full py-16 min-h-screen"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <motion.div variants={childVariants}>
+          <WorkExperience />
+        </motion.div>
+      </motion.section>
 
       {/* Projects Section */}
-      <section
-        className="flex flex-col items-center justify-center h-100px min-h-screen"
+      <motion.section
         id="projects"
+        className="flex flex-col items-center justify-center h-100px min-h-screen"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+        variants={sectionVariants}
       >
-        {/* <div className="flex flex-col items-center justify-center mb-8">
-          <h1 className="text-6xl font-bold">Projects</h1>
-        </div> */}
-
-        <div style={{ position: "relative" }}>
+        <motion.div variants={childVariants} style={{ position: "relative" }}>
           <Carousel
-            // baseWidth={300}
             autoplay={false}
             autoplayDelay={3000}
-            pauseOnHover={true}
-            loop={true}
+            pauseOnHover
+            loop
             round={false}
           />
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* Skills Section */}
-      <section
-        className="flex flex-col items-center justify-center w-full py-16 min-h-screen text-2xl"
+      <motion.section
         id="skills"
+        className="flex flex-col items-center justify-center w-full py-16 min-h-screen text-2xl"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+        variants={sectionVariants}
       >
-        {/* <div className="flex flex-col items-center justify-center">
-          <h2 className="text-6xl font-bold">Skills</h2>
-        </div> */}
-
-        <div style={{ width: "80vw", height: "80vh" }}>
+        <motion.div
+          variants={childVariants}
+          style={{ width: "80vw", height: "80vh" }}
+        >
           <DomeGallery
             fit={0.5}
             minRadius={300}
@@ -111,18 +147,35 @@ export default function Page() {
             grayscale={false}
             maxVerticalRotationDeg={10}
           />
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* Contact Section */}
-      <ContactForm id="contact" />
-
-      {/* <Example /> */}
+      <motion.section
+        id="contact"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <motion.div variants={childVariants}>
+          <ContactForm />
+        </motion.div>
+      </motion.section>
 
       {/* Footer */}
-      <div className="flex w-full items-center justify-center">
-        <Footer />
-      </div>
+      <motion.div
+        className="flex w-full items-center justify-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+        variants={sectionVariants}
+      >
+        <motion.div variants={childVariants}>
+          <Footer />
+        </motion.div>
+      </motion.div>
+
       <ScrollToTopButton />
     </div>
   );
