@@ -37,7 +37,7 @@ export function ContactForm({
       });
 
       if (response.ok) {
-        toast.success("✅ Message sent successfully!", {
+        toast.success("Message sent successfully!", {
           id: toastId,
           duration: 3000, // auto close after 3s
         });

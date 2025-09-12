@@ -16,7 +16,7 @@ const ResponsiveScrambledText = () => {
         className="text-black dark:text-white"
         style={{ textAlign: "justify", lineHeight: "1.6" }}
       >
-        I am Rohan Katkam, a <strong>Full Stack Developer</strong> with <strong>31 months</strong> of experience
+        I am Rohan Katkam, a <strong>Full Stack Developer</strong> with <strong>1.5+ years</strong> of experience
         building scalable web applications. I specialize in React.js, Node.js,
         and cloud technologies, delivering end-to-end solutions that drive
         results. Experienced in Agile development and leading cross-functional

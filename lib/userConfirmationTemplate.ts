@@ -7,10 +7,6 @@ export const userConfirmationTemplate = (
   instagram = "https://www.instagram.com/katkamrohan/",
   youtube = "https://www.youtube.com/@rohankatkam1698"
 ) => `
-  <div style="display:none;overflow:hidden;line-height:1px;opacity:0;max-height:0;max-width:0">
-    New message from your portfolio contact form ${name} (${email})
-  </div>
-
   <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:16px 8px;">
     <tr>
       <td align="center">
