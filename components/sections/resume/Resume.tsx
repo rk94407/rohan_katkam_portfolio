@@ -39,7 +39,7 @@ const SmartFloatingResumeButton = () => {
   }, [scrollTimeout]);
 
   const handleClick = () => {
-    window.open("/Rohan_Katkam.pdf", "_blank", "noopener,noreferrer");
+    window.open("/Rohan_Katkam_FSD.pdf", "_blank", "noopener,noreferrer");
   };
 
   return (
