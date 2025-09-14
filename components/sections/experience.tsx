@@ -111,7 +111,7 @@ const WorkExperience = () => {
                   </motion.div>
 
                   {/* Right side */}
-                  <div className="w-full sm:w-1/2 sm:pl-8 mb-5">
+                  <div className="w-full sm:w-1/2 sm:pl-8 mb-5 mt-5">
                     <h4 className="text-base sm:text-xl font-semibold text-gray-800 mb-4 dark:text-white">
                       {exp.role}
                     </h4>
