@@ -21,7 +21,7 @@ export const experiences = [
   {
     company: "Allure MedSpa",
     period: "Dec 2017 - Apr 2018",
-    role: "WEB DEVELOPER INTERN",
+    role: "FULL STACK DEVELOPER",
     description: [
       "Developed interactive modules with Angular, Node.js, MongoDB, increasing user engagement by 30%.",
       "Enhanced UI responsiveness across browsers using React.js and Bootstrap, improving cross-browser experience.",
