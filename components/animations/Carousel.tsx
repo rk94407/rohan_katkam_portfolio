@@ -155,7 +155,7 @@ export default function Carousel({
   //     };
 
   return (
-    <div className="relative w-max mx-auto backdrop-blur-xs bg-white/10 dark:bg-black/10">
+    <div className="relative w-max mx-auto backdrop-blur-xs">
       <div className="flex flex-col items-center justify-center px-4">
         <h1
           className="
