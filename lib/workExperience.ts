@@ -5,7 +5,7 @@ export const experiences = [
     role: "PROJECT MANAGER & FULL STACK DEVELOPER",
     description: [
       "Led a cross-functional team using Agile to deliver an AI chatbot and RFP onboarding system, achieving timely delivery and high client satisfaction.",
-      "Streamlined task tracking via Trello and daily standups, improving completion rate by 25%.",
+      "Streamlined task tracking via Jira, Trello and daily standups, improving completion rate by 25%.",
       "Built scalable MERN RFP forms, reducing manual intake process by over 40%.",
       "Integrated DeepSeek AI 1B model for responsive chatbot interaction, increasing engagement.",
     ],
