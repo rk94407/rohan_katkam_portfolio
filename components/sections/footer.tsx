@@ -54,7 +54,7 @@ const navigation = [
   },
   {
     name: "YouTube",
-    href: "https://youtube.com/@rohankatkam1698?feature=shared",
+    href: "https://www.youtube.com/@rohankatkam1698",
     icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
       <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
         <path
