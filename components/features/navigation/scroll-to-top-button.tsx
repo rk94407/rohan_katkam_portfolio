@@ -64,7 +64,7 @@ export default function ScrollToTopButton({
           transition={{ duration: 0.3 }}
           className={`fixed ${bottom} ${right} z-50 p-3 rounded-full shadow-lg 
                       ${defaultBg} ${defaultText} transition transform 
-                      hover:scale-[${hoverScale}] ${className}`}
+                      hover:scale-[${hoverScale}] ${className} cursor-pointer`}
           aria-label="Scroll to top"
         >
           {icon ?? <ArrowUp className="w-6 h-6" />}
