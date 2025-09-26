@@ -24,6 +24,12 @@
       {
         "listitem": "off"
       }
+    ],
+    "axe/text-alternatives": [
+      "default",
+      {
+        "frame-title": "off"
+      }
     ]
   }
 }
