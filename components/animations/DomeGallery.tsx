@@ -2,13 +2,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useMemo, useRef, useCallback } from 'react';
 import { useGesture } from '@use-gesture/react';
-import { DEFAULT_IMAGES } from '@/lib/domeImages';
+import { DEFAULT_IMAGES } from '@/lib/domeIcons';
 
 
-type ImageItem = string | { src: string; alt?: string; text?: string };
+type IconItem = string | { src: string; alt?: string; text?: string };
 
 type DomeGalleryProps = {
-  images?: ImageItem[];
+  images?: IconItem[];
   fit?: number;
   fitBasis?: 'auto' | 'min' | 'max' | 'width' | 'height';
   minRadius?: number;
@@ -56,19 +56,19 @@ const getDataNumber = (el: HTMLElement, name: string, fallback: number) => {
   return Number.isFinite(n) ? n : fallback;
 };
 
-function buildItems(pool: ImageItem[], seg: number): ItemDef[] {
+function buildItems(pool: IconItem[], seg: number): ItemDef[] {
   const xCols = Array.from({ length: seg }, (_, i) => -37 + i * 2);
   const evenYs = [-4, -2, 0, 2, 4];
   const oddYs = [-3, -1, 1, 3, 5];
 
   const coords = xCols.flatMap((x, c) => {
     const ys = c % 2 === 0 ? evenYs : oddYs;
-    return ys.map(y => ({ x, y, sizeX: 2, sizeY: 2 }));
+    return ys.map((y) => ({ x, y, sizeX: 2, sizeY: 2 }));
   });
 
   const totalSlots = coords.length;
   if (pool.length === 0) {
-    return coords.map(c => ({ ...c, src: '', alt: '', text: '' }));
+    return coords.map((c) => ({ ...c, src: "", alt: "", text: "" }));
   }
   if (pool.length > totalSlots) {
     console.warn(
@@ -76,14 +76,17 @@ function buildItems(pool: ImageItem[], seg: number): ItemDef[] {
     );
   }
 
-  const normalizedImages = pool.map(image => {
-    if (typeof image === 'string') {
-      return { src: image, alt: '' };
+  const normalizedImages = pool.map((image) => {
+    if (typeof image === "string") {
+      return { src: image, alt: "" };
     }
-    return { src: image.src || '', alt: image.alt || '' };
+    return { src: image.src || "", alt: image.alt || "" };
   });
 
-  const usedImages = Array.from({ length: totalSlots }, (_, i) => normalizedImages[i % normalizedImages.length]);
+  const usedImages = Array.from(
+    { length: totalSlots },
+    (_, i) => normalizedImages[i % normalizedImages.length]
+  );
 
   for (let i = 1; i < usedImages.length; i++) {
     if (usedImages[i].src === usedImages[i - 1].src) {
@@ -102,7 +105,7 @@ function buildItems(pool: ImageItem[], seg: number): ItemDef[] {
     ...c,
     src: usedImages[i].src,
     alt: usedImages[i].alt,
-    text: ''
+    text: "",
   }));
 }
 

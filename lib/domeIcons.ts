@@ -1,6 +1,6 @@
-export type ImageItem = string | { src: string; alt?: string; text?: string };
+export type IconItem = string | { src: string; alt?: string; text?: string };
 
-export const DEFAULT_IMAGES: ImageItem[] = [
+export const DEFAULT_IMAGES: IconItem[] = [
   {
     src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
     alt: "Next.js",
@@ -151,5 +151,19 @@ export const DEFAULT_IMAGES: ImageItem[] = [
     alt: "Framer Motion",
     text: "Framer Motion",
   },
-  //   { src: "", alt: "" },
+  {
+    src: "https://files.svgcdn.io/simple-icons/clerk.svg",
+    alt: "Clerk",
+    text: "Clerk",
+  },
+  {
+    src: "https://files.svgcdn.io/logos/neon-icon.svg",
+    alt: "Neon",
+    text: "Neon",
+  },
+  {
+    src: "https://files.svgcdn.io/simple-icons/langchain.svg",
+    alt: "LangChain",
+    text: "LangChain",
+  },
 ];

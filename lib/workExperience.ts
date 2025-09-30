@@ -4,10 +4,9 @@ export const experiences = [
     period: "Jan 2025 - May 2025",
     role: "PROJECT MANAGER & FULL STACK DEVELOPER",
     description: [
-      "Led a cross-functional team using Agile to deliver an AI chatbot and RFP onboarding system, achieving timely delivery and high client satisfaction.",
-      "Streamlined task tracking via Jira, Trello and daily standups, improving completion rate by 25%.",
-      "Built scalable MERN RFP forms, reducing manual intake process by over 40%.",
-      "Integrated DeepSeek AI 1B model for responsive chatbot interaction, increasing engagement.",
+      "Developed an AI chatbot using Retrieval-Augmented Generation (RAG) by integrating company data sources, for context-aware responses.",
+      "Automated data ingestion pipelines so the chatbot continuously updated with changes in the underlying data, ensuring accuracy and relevance.",
+      "Enhanced user engagement by combining RAG with the DeepSeek AI 1B model for responsive and dynamic interactions.",
     ],
     dotColor: "bg-teal-500",
   },
