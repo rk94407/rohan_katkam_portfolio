@@ -6,6 +6,7 @@ import TextType from "@/components/animations/TextType";
 export default function HeroSubtitle() {
   return (
     <motion.div
+      id="hero"
       className="min-h-screen flex items-center justify-center"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}

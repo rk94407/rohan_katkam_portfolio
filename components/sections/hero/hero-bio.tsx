@@ -22,12 +22,13 @@ const ResponsiveScrambledText = () => {
         className="text-black dark:text-white text-center lg:text-justify"
         style={{ lineHeight: "1.6" }}
       >
-        I am Rohan Katkam, a <strong>Full Stack Developer</strong> with{" "}
-        <strong>1.5+ years</strong> of experience building scalable web
-        applications. I specialize in React.js, Node.js, and cloud technologies,
-        delivering end-to-end solutions that drive results. Experienced in Agile
-        development and leading cross-functional teams, I also integrate
-        AI-driven features to boost user engagement by up to 30%.
+        I am Rohan Katkam, a <strong>Full-Stack Software Engineer</strong> with
+        nearly <strong>5 years</strong> of experience designing, building, and
+        integrating API-based applications with React, TypeScript, Java (Spring
+        Boot), Python, and Node.js. I work with REST APIs, microservices,
+        real-time WebSockets, and CI/CD with Docker and Kubernetes on AWS, and I
+        integrate AI with LLMs, RAG, and LangChain. I collaborate closely with
+        product, UX, QA, and DevOps teams in agile environments.
       </p>
     </motion.div>
   );
