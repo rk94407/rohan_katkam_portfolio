@@ -166,4 +166,94 @@ export const DEFAULT_IMAGES: IconItem[] = [
     alt: "LangChain",
     text: "LangChain",
   },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    alt: "Python",
+    text: "Python",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+    alt: "C#",
+    text: "C#",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg",
+    alt: "Spring Boot",
+    text: "Spring Boot",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+    alt: "FastAPI",
+    text: "FastAPI",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    alt: "PostgreSQL",
+    text: "PostgreSQL",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg",
+    alt: "SQL Server",
+    text: "SQL Server",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+    alt: "Redis",
+    text: "Redis",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elasticsearch/elasticsearch-original.svg",
+    alt: "Elasticsearch",
+    text: "Elasticsearch",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg",
+    alt: "Kubernetes",
+    text: "Kubernetes",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-original.svg",
+    alt: "GitHub Actions",
+    text: "GitHub Actions",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+    alt: "Linux",
+    text: "Linux",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jwt/jwt-original.svg",
+    alt: "JWT",
+    text: "JWT",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/junit/junit-original.svg",
+    alt: "JUnit",
+    text: "JUnit",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytest/pytest-original.svg",
+    alt: "PyTest",
+    text: "PyTest",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg",
+    alt: "Jest",
+    text: "Jest",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/playwright/playwright-original.svg",
+    alt: "Playwright",
+    text: "Playwright",
+  },
+  {
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg",
+    alt: "Selenium",
+    text: "Selenium",
+  },
+  {
+    src: "https://files.svgcdn.io/simple-icons/claude.svg",
+    alt: "Claude",
+    text: "Claude",
+  },
 ];

@@ -1,12 +1,39 @@
 export const experiences = [
   {
+    company: "Amazon",
+    period: "Jun 2026 - Present",
+    role: "SOFTWARE DEVELOPMENT ENGINEER",
+    description: [
+      "Architect and deploy full-stack distributed systems and high-throughput microservices using Java (Spring Boot), Python, and React, reducing end-to-end API latency from 450 ms to under 110 ms (75%).",
+      "Develop and deploy autonomous Agentic AI tools and workflow agents using Python, LangGraph, and LLM function calling to automate system telemetry triage, log inspection, and developer operations.",
+      "Design and optimize high-concurrency transactional data layers on PostgreSQL and DynamoDB, fine-tuning indexes and query plans for high-volume enterprise traffic.",
+      "Deploy, containerize, and orchestrate production workloads on Kubernetes across AWS, sustaining 99.95% availability.",
+      "Build automated CI/CD pipelines via GitHub Actions and Docker with zero-downtime rolling deployments, automated tests, and continuous security compliance.",
+    ],
+    dotColor: "bg-blue-500",
+  },
+  {
+    company: "Bright Mind Enrichment",
+    period: "Jun 2025 - Jun 2026",
+    role: "FULL STACK SOFTWARE ENGINEER",
+    description: [
+      "Led full-stack architecture and delivery of 15+ customer-facing modules using React, TypeScript, and Java/Spring Boot in an agile, cross-functional engineering environment.",
+      "Integrated real-time client-server communication via RESTful APIs and WebSockets with exponential-backoff retries, decreasing connection drop-offs by 50%.",
+      "Built Elasticsearch and PostgreSQL search and indexing data pipelines, boosting concurrent search query speeds by 45% for 2,000+ daily active users.",
+      "Established end-to-end automated testing pipelines (JUnit, Mockito, Jest, React Testing Library), elevating test coverage from 55% to 85%.",
+      "Troubleshot production incidents through rigorous root cause analysis (RCA), implementing corrective platform safeguards.",
+    ],
+    dotColor: "bg-purple-500",
+  },
+  {
     company: "Nuboe.com",
     period: "Jan 2025 - May 2025",
-    role: "PROJECT MANAGER & FULL STACK DEVELOPER",
+    role: "SOFTWARE ENGINEER, BACKEND & AI",
     description: [
-      "Developed an AI chatbot using Retrieval-Augmented Generation (RAG) by integrating company data sources, for context-aware responses.",
-      "Automated data ingestion pipelines so the chatbot continuously updated with changes in the underlying data, ensuring accuracy and relevance.",
-      "Enhanced user engagement by combining RAG with the DeepSeek AI 1B model for responsive and dynamic interactions.",
+      "Built 15+ microservices and REST APIs in Python, Java, and Node.js for an enterprise platform, eliminating 12+ manual operational hours weekly.",
+      "Led development of Agentic AI workflows and RAG chat assistants with LangChain, Python, vector embeddings, hybrid lexical-plus-vector search, and autonomous tool calling.",
+      "Cut production release turnaround from days to under 2 hours by standardizing Docker containerization and GitHub Actions automation.",
+      "Engineered shared security middleware handling token authentication (JWT/OAuth2), credential masking, and audit logging.",
     ],
     dotColor: "bg-teal-500",
   },
@@ -18,27 +45,15 @@ export const experiences = [
     dotColor: "📚",
   },
   {
-    company: "Allure MedSpa",
-    period: "Dec 2017 - Apr 2018",
-    role: "FULL STACK DEVELOPER",
+    company: "L&T (Larsen & Toubro)",
+    period: "Apr 2015 - Apr 2018",
+    role: "SOFTWARE ENGINEER",
     description: [
-      "Developed interactive modules with Angular, Node.js, MongoDB, increasing user engagement by 30%.",
-      "Enhanced UI responsiveness across browsers using React.js and Bootstrap, improving cross-browser experience.",
-      "Refactored front-end structure, reducing load times by 50%.",
-      "Implemented responsive design with FlexBox and Media Queries, boosting mobile retention.",
-    ],
-    dotColor: "bg-orange-500",
-  },
-  {
-    company: "L&T HED",
-    period: "Apr 2016 - Sep 2016",
-    role: "TRAINER ASSISTANT",
-    description: [
-      "Restructured training content to improve onboarding efficiency for 6–10 hires per batch.",
-      "Delivered 20+ technical and soft-skill sessions, leading to a 30% increase in trainee performance.",
-      "Facilitated new hire integration into teams, reducing ramp-up time significantly.",
+      "Built enterprise backend applications and data services using Java, C# (.NET), MySQL, and SQL Server for executive reporting.",
+      "Implemented database query tuning, table restructuring, and indexing strategies that improved throughput across large financial datasets.",
+      "Delivered 10+ technical workshops on query execution plans, object-oriented design, and performance optimization for engineering teams.",
+      "Collaborated with business analysts and stakeholders to translate requirements into production-ready software solutions.",
     ],
     dotColor: "bg-yellow-500",
   },
 ];
-

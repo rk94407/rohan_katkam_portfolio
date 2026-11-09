@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import SplitText from "@/components/animations/splitting-text";
+import HeroScrollCue from "./hero-scroll-cue";
 
 export default function HeroTitle() {
   const [key, setKey] = useState(0);
@@ -19,7 +20,7 @@ export default function HeroTitle() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center space-y-4">
+    <div className="relative min-h-screen flex flex-col items-center justify-center space-y-4">
       <SplitText
         key={key} // <-- re-mounts component to trigger animation again
         text="Rohan Katkam"
@@ -34,6 +35,7 @@ export default function HeroTitle() {
         rootMargin="-100px"
         textAlign="center"
       />
+      <HeroScrollCue />
     </div>
   );
 }
